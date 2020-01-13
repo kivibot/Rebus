@@ -36,6 +36,17 @@ namespace Rebus.Threading
             return new ParallelOperation(canContinue, this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ParallelOperation Begin()
+        {
+            _semaphore.Wait();
+
+            return new ParallelOperation(true, this);
+        }
+
         void OperationFinished()
         {
             _semaphore.Release(1);

@@ -76,7 +76,7 @@ namespace Rebus.Workers.ThreadPoolBased
 
         void TryReceiveNextMessage(CancellationToken token)
         {
-            var parallelOperation = _parallelOperationsManager.TryBegin();
+            var parallelOperation = _parallelOperationsManager.Begin();
 
             if (!parallelOperation.CanContinue())
             {
